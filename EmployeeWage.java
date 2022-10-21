@@ -10,6 +10,7 @@ public class EmployeeWage {
 		int randomCheck = (int) (Math.random() * 3);
 		int Wage_per_Hour = 20;
 		int Full_Day_Hour = 8;
+		int Off_Day_Hour = 4;
 		int Total_Wage = 0;
 
 		if (randomCheck == 0) {
