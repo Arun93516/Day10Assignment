@@ -1,51 +1,45 @@
 package Day10Assignment;
 
+import java.math.*;
 import java.util.Random;
 import java.util.Scanner;
 
 public class EmployeeWage {
+
 	public static void main(String[] args) {
-		System.out.println("Welcome to Employee Wage Computation .");
-
-		int wagePerHour = 20;
-		int fullDayHours = 8;
-		int halfDayHours = 4;
-		int salary = 0;
-		int monthlySalary = 0;
-		int workingDaysPerMonth = 20;
-		int workingHoursperMonth = 0;
-		int days = 1;
-
-		Random random = new Random();
-
-		while (days != 20 && workingHoursperMonth != 100) {
-
-			int randomNum = random.nextInt(3);
-
-			switch (randomNum) {
-			case 0:
-				System.out.println("Employee is Absent");
-				break;
-
-			case 1:
-				System.out.println("Employee is Present");
-				salary = wagePerHour * fullDayHours;
-				workingHoursperMonth = workingHoursperMonth + fullDayHours;
-				break;
-
-			case 2:
-				System.out.println("Employee is Present for Halfday");
-				salary = wagePerHour * halfDayHours;
-				workingHoursperMonth = workingHoursperMonth + halfDayHours;
+		Scanner in = new Scanner(System.in);
+		System.out.println("Welcome to Employee Wage Computation");
+		Random status = new Random();
+		int RandomNumber = status.nextInt(2);
+		int day = 20, Hours = 100;
+		int Wage_per_Hour = 20, Full_Day_Hour = 8;
+		int Part_Time_Hour = 8, Total_Wage = 0;
+		int Total_Wage_Sum = 0;
+		while (day != 0 && Hours != 0) {
+			switch (RandomNumber) {
+			case 0: {
+				System.out.println("Employee is absent");
+				System.out.println(Total_Wage);
 				break;
 			}
-			monthlySalary = monthlySalary + salary;
-			System.out.println("day " + days + " salary is : " + salary);
-			days++;
+			case 1: {
+				System.out.println("Part time Hour");
+				Total_Wage = Wage_per_Hour * Part_Time_Hour;
+				Total_Wage_Sum =Total_Wage_Sum + Total_Wage;
+				System.out.println(Total_Wage_Sum);
+				break;
+			}
+			default: {
+				Total_Wage = Wage_per_Hour * Full_Day_Hour;
+				System.out.println("Employee is present");
+				System.out.println(Total_Wage);
+				break;
+
+			}
+			}
+			day--;
+			Hours--;
 		}
-
-		System.out.print("Employees monthly salary is : " + monthlySalary);
-
 	}
 
 }
