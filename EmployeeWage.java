@@ -1,35 +1,51 @@
 package Day10Assignment;
 
+import java.util.Random;
 import java.util.Scanner;
-import java.math.*;
 
 public class EmployeeWage {
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		System.out.println("Welcome to Employee Wage Computation");
-		int status = (int) (Math.random()* 3);
-		int Wage_per_Hour = 20;
-		int Full_Day_Hour = 8;
-		int Part_Time_Hour = 4;
-		int Total_Wage = 0;
+		System.out.println("Welcome to Employee Wage Computation .");
 
-		switch (status) {
-		case 0: {
-			System.out.println("Employee is absent");
-			break;
-			
+		int wagePerHour = 20;
+		int fullDayHours = 8;
+		int halfDayHours = 4;
+		int salary = 0;
+		int monthlySalary = 0;
+		int workingDaysPerMonth = 20;
+		int workingHoursperMonth = 0;
+		int days = 1;
+
+		Random random = new Random();
+
+		while (days != 20 && workingHoursperMonth != 100) {
+
+			int randomNum = random.nextInt(3);
+
+			switch (randomNum) {
+			case 0:
+				System.out.println("Employee is Absent");
+				break;
+
+			case 1:
+				System.out.println("Employee is Present");
+				salary = wagePerHour * fullDayHours;
+				workingHoursperMonth = workingHoursperMonth + fullDayHours;
+				break;
+
+			case 2:
+				System.out.println("Employee is Present for Halfday");
+				salary = wagePerHour * halfDayHours;
+				workingHoursperMonth = workingHoursperMonth + halfDayHours;
+				break;
+			}
+			monthlySalary = monthlySalary + salary;
+			System.out.println("day " + days + " salary is : " + salary);
+			days++;
 		}
-		case 1: {
-			System.out.println("Part time Hour");
-			Total_Wage = Wage_per_Hour * Part_Time_Hour;
-			break;
-			
-		}
-		default: {
-			Total_Wage = Wage_per_Hour * Full_Day_Hour;
-			System.out.println("Employee is present");
-			System.out.println(Total_Wage);
-		}
-		}
+
+		System.out.print("Employees monthly salary is : " + monthlySalary);
+
 	}
+
 }
